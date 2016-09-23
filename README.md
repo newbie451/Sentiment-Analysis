@@ -1,5 +1,5 @@
 Project description:
-        This is a Twitter Sentiment Analysis ML project using Naive Bayes Algorithm. Live tweets are collected from Twitter using Twitter4j API. To create the dataset tweets gets classified by IBM's Alchemy API. Then dataset is used to train and create model. Website on locahost machine is created to give demo in django framework. Accuracy comes out to 78%.
+        This is a Twitter Sentiment Analysis ML project using Naive Bayes Algorithm. Live tweets are collected from Twitter using Twitter4j API. To create the dataset tweets gets classified by IBM's Alchemy API. Then dataset is used to train and create model. Website on locahost machine in django framework is created to give demo . Accuracy comes out to 78%.
 
 Technology
 1.Java
