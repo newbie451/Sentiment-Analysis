@@ -1,0 +1,41 @@
+ body
+    {
+        /*background-image: url("background1.jpg")*/;
+        background-repeat: no-repeat;
+        background-color: black;
+        background-size: 1920px 1080px;
+         margin-top: 100px;
+         margin-left:50px; 
+        /*background-attachment:fixed;*/
+    }
+  h1
+   {
+       margin-top: 150px;
+       color:#75D1FF;
+       font-size: 47px;
+       font-family: "Times New Roman", Times, serif;
+
+              
+   }
+   .style1
+   {
+	    font-family:sans-serif;
+	    font-size:20px;
+   }
+   textarea
+   {
+    background-color: #080b19;
+    outline: none !important;
+    border:2px;
+    box-shadow: 0 0 10px #75D1FF; 
+    color: #75D1FF;
+   }
+   h3
+   {
+        margin-top: 150px;
+        margin-left: 530px;
+        color: #C2E0FF;
+        font-size: 20px;
+        font-style: italic;
+        
+   }

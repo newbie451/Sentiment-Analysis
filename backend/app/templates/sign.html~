@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title> sentimental analysis</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/static/style1.css' %}" />
+
+<!--link rel="stylesheet" href="/home/prathamsh/Final/style1.css"-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <center><h1> Twitter Sentiment</h1></center>
+<center>
+	 <table cellpadding="0" cellspacing="0">
+<tr><td>
+<form action="keyword.html" method="post" style="padding: 0; margin: 0">
+<input type="submit" value="Sentiment by keyword" name="X1">
+</form>
+</td><td>
+<form action="textword.html" method="post" style="padding: 0; margin: 0">
+<input type="submit" value="Sentiment for text" name="X2">
+</form>
+</td><td>
+<form action="normalres.html" method="post" style="padding: 0; margin: 0">
+<input type="submit" value="Sentiment for text" name="X2">
+</form>
+</td></tr></table>
+</center>
+</body>
+</html>                                		

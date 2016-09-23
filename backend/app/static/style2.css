@@ -1,0 +1,43 @@
+body
+    {
+        /*background-image: url("background1.jpg");*/
+        background-repeat: no-repeat;
+        background-color: black;
+        background-size: 1900px 1200px;
+        margin-top: 100px;
+        margin-left:50px; 
+        background-attachment:fixed;
+    }
+
+    h1
+    {
+       font-size: 50px;
+       font-family: "Times New Roman", Times, serif;
+       color:#75D1FF;
+       text-align: center;
+       margin-top: 100px;
+    }
+
+    h3
+    {
+       color:#75D1FF;
+       font:italic;
+       font-size: 30px;
+       text-align: center;
+       margin-top: 275px; 
+    }
+    p 
+    {
+    color: #C2E0FF;
+    font-size: 30px;
+    font-style: italic;
+    }
+    .line
+   {
+        margin-top: 150px;
+        text-align: center;
+        color: #C2E0FF;
+        font-size: 20px;
+        font-style: italic;
+        
+   }

@@ -1,0 +1,19 @@
+
+body 
+    {
+        background-repeat: no-repeat;
+        background-size:1800px 1080px;
+	    align:center;
+        background-color:black;
+    }
+h2
+{
+	align: center;
+        color: #75D1FF;
+        margin-top: 50px;
+        font-size: 50px; 
+        font-style: normal;
+        font-weight: 600;
+        font-variant: small-caps; 
+        font-family: "Times New Roman", Times, serif;
+}

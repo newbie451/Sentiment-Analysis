@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static '/static/style2.css' %}" />
+<title>Text Sentiment</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</head>
+
+<body>
+<center> 
+    <h1>The entered text is: </h1> 
+    <p>{{ string }}</p>
+    <h3>Sentiment: </h3>  
+    <p>{{ sentiment }} </p>
+    <a href="/">Go to HomePage</a>
+  </center>
+  <h3 class="line">In case the output is not as expected, its because the classifier chooses default label when it cannot find keyword in the text.</h3>
+</body>
+
+</html>

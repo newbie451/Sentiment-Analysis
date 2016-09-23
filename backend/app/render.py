@@ -1,0 +1,43 @@
+import os
+import subprocess as sub
+from sys import argv
+
+sentiment=[]
+tweet=[]
+tweet1=[]
+for line in argv[1:]:
+	tweet1.append(line)
+str_yo= " ".join(str(i) for i in tweet1)
+
+def compile_java(key):
+	var=['java -classpath' , '"lib/*:."' , 'SimpleStream']
+	var.append(key)
+	command =  " ".join(var)
+	p = os.popen(command,"r")
+	count=0
+	count1=0
+	count2=0
+
+	while count<13:
+		line = p.readline()
+		print line
+		print type(line)
+		if count>2:
+			if count%2==0:
+				sentiment.append(line)
+				if line=="Positive":
+					count1+=1
+				if line=="Negative":
+					count2+=1
+			elif count%2==1:
+				tweet.append(line)	
+		count+=1 
+	print(count)
+	print(count1)
+	print(count2)
+
+compile_java(str_yo);
+
+for i in range(len(tweet)):
+	print "Tweet: " + tweet[i]
+	print "Sentiment: " + sentiment[i]

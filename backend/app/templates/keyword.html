@@ -1,0 +1,34 @@
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static '/static/style4.css' %}" />
+<title>
+</title>
+</head>
+<body >
+<div id="buttonreplacement" style="margin-left:0px;margin-top:150px ;display:none;">
+<center>	<img id="buttonreplacement" style="width:800px;height:600px;background-color: black;"src="{{STATIC_URL}}/static/Loading.gif" alt="loading..."></center>
+</div>
+<center id="formsubmitbutton" class="spinner">
+<h1>Enter below the keyword to find its sentiment: </h1>
+<br><br>
+<form action="keyres.html" method="POST" style="padding: 0; margin: 0" name="myForm" onsubmit="return validateForm()">
+<input class="ta" type="textarea" maxlength="20" name="key" style="width: 625px;height: 55px" autocomplete="on"/>
+<br><br><br><br>
+<input type="submit"   style="width:150px;height:40px;background-color:blue;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;font-size:23px;" value="See result"  name="X2" onclick="ButtonClicked()">
+</form>
+</center>
+<script type="text/javascript">
+function validateForm() {
+    var x = document.forms["myForm"]["key"].value;
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+
+</script>
+<h3>To obtain best results use keywords frequently used by users in their tweets like morning or sad.<br>That's because we stream in real-time and if no tweets are received then the output shall be unreliable.
+</h3>
+</body>
+</html>

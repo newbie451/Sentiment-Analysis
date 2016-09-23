@@ -1,0 +1,53 @@
+<html>
+  <head>
+	<title>Check Sentiment</title>
+	<p id="disp"></p>
+<script>
+    var tweets = {{ tweets_array|safe }};
+    var sent = {{ sent_array|safe }};
+    var i=0;
+    var text='';
+    for(i=0;i<5;i++){
+        text+=tweets[i]+"<br>"+sent[i]+"<br>";
+    }
+    document.getElementById("disp").innerHTML='This is keyword {{ abc }}';
+    document.getElementById("disp").innerHTML=text;
+    </script>
+document.getElementById("disp").innerHTML='This is keyword {{ abc }}';
+       <input type ="button" value="Graphical View" id="ses">
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+    	var pos=60;
+	var neg=40;
+        var data = google.visualization.arrayToDataTable([
+        ['Sentiment', 'per 20 tweets'],
+        ['Positive', pos],
+        ['Negative', neg],
+    ]);
+
+    var options = {
+        title: 'Sentiment Analysis'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+}
+function initialize () {
+    $(/* click event element selector */).click(function() {
+        drawChart();
+    });
+}
+google.setOnLoadCallback(initialize);
+google.load("visualization", "1", {packages:["corechart"]});
+    </script>
+
+      This is keyword {{ x }} ,
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static '/static/style3.css' %}" />
+<!--<link rel="stylesheet" href="/home/prathamsh/Final/style3.css">-->
+<title>Text Sentiment</title>
+</head>
+
+<body>
+<center>
+<h1>Enter below the text to find its sentiment: </h1>
+<br>
+
+<form action="textres.html" method="POST" style="padding: 0; margin: 0;">
+<textarea class="style1" name="content" rows="11" cols="65" maxlength="200" placeholder=""></textarea>
+<br><br><br><br><br>
+<input type="submit" style="width:150px;height:50px;color:#75D1FF;background-color:black;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;font-size:23px;" value="See result" name="X3">
+</form>
+</center>
+<h3>Note: Please refrain from using any other language than english</h3>
+</body>
+</html>

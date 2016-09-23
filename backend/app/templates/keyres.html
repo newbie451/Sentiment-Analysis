@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    {% load staticfiles %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<link rel="stylesheet" href="{% static '/static/style5.css' %}">
+</head>
+
+<body>
+<center>
+    <h2>Tweets containing the entered keyword are as follows:</h2>   
+    <br> 
+    <div id="disp1" style="width:1080px;height:125px;border:1px solid #000;color:#75D1FF;background-color:black;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;"></div> <br>
+    <div id="disp2"  style="width:1080px;height:125px;border:1px solid #000;color:#75D1FF;background-color:black;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;"></div><br>
+    <div id="disp3"  style="width:1080px;height:125px;border:1px solid #000;color:#75D1FF;background-color:black;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;"></div><br>
+    <div id="disp4"  style="width:1080px;height:125px;border:1px solid #000;color:#75D1FF;background-color:black;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;"></div><br>
+    <div id="disp5"  style="width:1080px;height:125px;border:1px solid #000;color:#75D1FF;background-color:black;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;"></div><br>
+    <script>
+    var tweets = {{ tweets_array|safe }};
+    var sent = {{ sent_array|safe }};
+    var i=0;
+    var text1='';text2='';text3='';text4='';text5='';
+        text1=tweets[0]+"<br><br>"+sent[0]+"<br>";
+        text2=tweets[1]+"<br><br>"+sent[1]+"<br>";
+        text3=tweets[2]+"<br><br>"+sent[2]+"<br>";
+        text4=tweets[3]+"<br><br>"+sent[3]+"<br>";        
+        text5=tweets[4]+"<br><br>"+sent[4]+"<br>";        
+        document.getElementById("disp1").innerHTML=text1;
+        document.getElementById("disp2").innerHTML=text2;
+        document.getElementById("disp3").innerHTML=text3;
+        document.getElementById("disp4").innerHTML=text4;
+        document.getElementById("disp5").innerHTML=text5;            
+    </script>
+    <br> <br>
+    <button class="btn" style="color:#75D1FF;background-color:black;outline: none !important;border:2px;box-shadow: 0 0 10px #75D1FF;font-size:23px;">Graphical view</button>
+    <br> <br> <br>
+    
+    <div id="piechart" style="width: 500px; height: 500px;margin-left:110px " class="piechart"></div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".btn").click(function(){
+                google.load("visualization", "1", {packages:["corechart"], "callback": drawChart});
+                google.setOnLoadCallback(drawChart);
+                    function drawChart() {
+                        var pos=parseInt({{ count1 }});
+                        var neg=parseInt({{ count2 }});
+            		var data = google.visualization.arrayToDataTable([
+                        ['Sentiment', 'per 20 tweets'],
+                        ['Positive', pos],
+                        ['Negative', neg],
+                        ]);
+                        var options = {
+                        is3D: true,
+                        legend: {position: 'top', textStyle: {color: 'white', fontSize: 16}},
+                        backgroundColor: '#000000',
+                        };
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                        chart.draw(data, options);
+                        }
+                    });
+                });
+    </script>
+</center>
+</body>
+
+</html>

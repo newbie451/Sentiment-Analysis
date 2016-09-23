@@ -1,0 +1,100 @@
+import com.mongodb.MongoClient;
+
+import twitter4j.*;
+import twitter4j.conf.ConfigurationBuilder;
+
+import com.mongodb.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+public class SimpleStream  implements Runnable{
+	static String content;
+	static int count=0;
+	public static void main(String[] args) {
+		
+		String str[]=new String[10];
+		for (String strr: args)
+		{
+			str[0]=strr;
+		}
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setDebugEnabled(true);
+		cb.setOAuthConsumerKey("3k3Tkk0YYMKbE6CFIlIMCdTwy");
+		cb.setOAuthConsumerSecret("uzSlmsj9GxtLbmqEyM9Eu6KkeZ0eQU5MviaMjumQ4ulEsN27Wk");
+		cb.setOAuthAccessToken("2252271468-aX5sGebx8nC9q7KzLnnE3rWS6WS38l0jrg2BXS6");
+		cb.setOAuthAccessTokenSecret("CDyNSILl0NXcnhIC5xuUJtAV4zznkfufyASAWRks1QPrr");
+		TwitterStream twitterStream = new TwitterStreamFactory(cb.build()).getInstance();
+		StatusListener listener = new StatusListener() {
+			@Override
+			public void onException(Exception arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onDeletionNotice(StatusDeletionNotice arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onScrubGeo(long arg0, long arg1) {
+				// TODO Auto-generated method stub
+
+			}
+			@Override
+			public void onStatus(Status status) {
+				User user = status.getUser();
+				String username = status.getUser().getScreenName();
+				//System.out.println(username);
+				String profileLocation = user.getLocation();
+				//System.out.println(profileLocation);
+				long tweetId = status.getId(); 
+				//System.out.println(tweetId);
+				content = status.getText();
+				System.out.println(content);
+				try{
+					Process p = Runtime.getRuntime().exec("python /home/nill/hello.py "+ content);
+					InputStreamReader x = new InputStreamReader(p.getInputStream());
+					BufferedReader br = new BufferedReader(x);
+					String line;					
+					while((line = br.readLine())!= null){
+						System.out.println(line);
+					}
+				} 
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+				count++;
+				if(count>=5)
+					System.exit(0);
+			}
+			@Override
+			public void onTrackLimitationNotice(int arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onStallWarning(StallWarning arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		FilterQuery fq = new FilterQuery();
+		fq.language(new String[]{"en"});
+		//String keyword[] ={"happy"};
+		fq.track(str);
+		double [][]location ={{-122.75,36.8},{-121.75,37.8}};
+		fq.locations(location);
+		//fq.track();
+		twitterStream.addListener(listener);
+		twitterStream.filter(fq);  
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+	}
+}
